@@ -1,0 +1,127 @@
+Create table [memo]
+(
+	[MEMO_NO] Integer NOT NULL,
+	[USER_ID] Char(20) NOT NULL,
+	[NOTICE_DATE] Datetime NOT NULL,
+	[MEMO_PASSWD] Char(8) NOT NULL,
+Primary Key ([MEMO_NO])
+) 
+
+
+Create table [CCOMP]
+(
+	[CONT_NO] Char(20) NOT NULL,
+	[FACT_BIZNO] Char(10) NOT NULL,
+	[CONT_DATE] Datetime NULL,
+	[MIN_AMT] Integer NULL,
+Primary Key ([CONT_NO])
+) 
+
+
+Create table [SUP]
+(
+	[FACT_BIZNO] Char(20) NOT NULL,
+	[SUP_NO] Integer NOT NULL,
+	[CONT_NO] Char(20) NOT NULL,
+	[SUP_DATE] Datetime NULL,
+	[SUP_AMT] Integer NULL,
+Primary Key ([FACT_BIZNO],[SUP_NO],[CONT_NO])
+) 
+
+
+Create table [DELIEV]
+(
+	[DIRECT_DELIEV_NO] Char(10) NOT NULL,
+	[DELIEV_COMP_BIZNO] Char(10) NOT NULL,
+	[CAL_NO] Char(10) NOT NULL,
+	[DIRECT_INDIRECT_DELIEV_TYPE_CD] Char(18) NULL,
+	[GEN_SPE_DELIEV_TYPE] Char(2) NULL,
+	[DELIEV_AMT] Integer NULL,
+	[DELIEV_DATE] Datetime NULL,
+Primary Key ([DIRECT_DELIEV_NO])
+) 
+
+
+Create table [MCOMP]
+(
+	[FACT_BIZNO] Char(10) NOT NULL,
+	[FACT_NM] Char(40) NULL,
+	[FACT_TELNO] Char(20) NULL,
+	[DELEIV_COMP_POSTNO] Char(10) NULL,
+	[FACT_ADDR] Char(120) NULL,
+	[DEAL_BANK_CD] Char(2) NULL,
+	[ACCT_NO] Char(20) NULL,
+	[DEPOSIT] Char(40) NULL,
+Primary Key ([FACT_BIZNO])
+) 
+
+
+Create table [MEMBER]
+(
+	[USER_ID] Char(20) NOT NULL,
+	[SID] Char(13) NOT NULL,
+	[PASSWD] Char(8) NOT NULL,
+	[POSTNO] Char(7) NULL,
+	[ADDR] Char(120) NOT NULL,
+	[TELNO] Char(20) NULL,
+	[MOBILE_NO] Char(20) NULL,
+	[SIGN_METHOD_CD] Char(2) NOT NULL,
+	[BUY_POINT] Integer NULL,
+Primary Key ([USER_ID])
+) 
+
+
+Create table [DELIEVCOMP]
+(
+	[DELIEV_COMP_BIZNO] Char(10) NOT NULL,
+	[DELIEV_COMP_NM] Char(40) NOT NULL,
+	[DELIEV_COMP_TELNO] Char(20) NOT NULL,
+	[DELIEV_COMP_POSTNO] Char(7) NOT NULL,
+	[DELIEV_COMP_ADDR] Char(120) NOT NULL,
+	[DEAL_BANK_CD] Char(2) NULL,
+	[ACCT_NO] Char(20) NOT NULL,
+	[DEPOSIT] Char(40) NOT NULL,
+Primary Key ([DELIEV_COMP_BIZNO])
+) 
+
+
+Create table [WAREHOUSE]
+(
+	[WAREHOUSE_CD] Char(2) NOT NULL,
+	[WAREHOUSE_PLACE] Char(100) NULL,
+	[USE_FLAG] Char(2) NULL,
+	[WAREHOUSE_TELNO] Char(20) NULL,
+	[WAREHOUSE_OCCUPY_RATE] Integer NULL,
+Primary Key ([WAREHOUSE_CD])
+) 
+
+
+Create table [EORDER]
+(
+	[USER_ID] Char(20) NOT NULL,
+	[DIRECT_DELIEV_NO] Char(10) NOT NULL,
+	[ORDER_NO] Char(14) NOT NULL,
+	[ORDER_DATE] Datetime NOT NULL,
+	[DELIEV_PLACE_ADDR] Char(20) NOT NULL,
+	[DELIEV_PLACE_TELNO] Char(2) NULL,
+	[DELIEV_METHOD_CD] Char(2) NOT NULL,
+	[SIGN_METHOD_CD] Char(100) NOT NULL,
+	[ETC_MATTER] Char(7) NULL,
+Primary Key ([ORDER_NO])
+) 
+
+
+Create table [ITEM]
+(
+	[ITEM_CD] Char(4) NOT NULL,
+	[FACT_BIZNO] Char(10) NOT NULL,
+	[WAREHOUSE_CD] Char(2) NOT NULL,
+	[ORDER_NO] Char(14) NOT NULL,
+	[ITEM_QTY] Integer NULL,
+	[ITEM_PRICE] Integer NULL,
+	[ITEM_TYPE] Char(2) NULL,
+	[PUB_DATE] Datetime NULL,
+	[APPLY_DC_RATE] Integer NULL,
+	[FACT_NM] Char(10) NULL,
+Primary Key ([ITEM_CD])
+) 
